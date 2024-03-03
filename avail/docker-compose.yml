@@ -3,12 +3,10 @@ version: "3.9"
 services:
   avail:
     container_name: avail
-    image: availj/avail:v1.10.0.0
-    restart: unless-stopped
-    stop_grace_period: 100s
+    image: availj/avail:${AVAIL_NODE_VERSION:-v1.10.0.0}
     command:
       - --chain=goldberg
-      - --name=ccrayz"
+      - --name=${AVAIL_NODE_NAME}
       - -d
       - /da/state
     ports:
@@ -17,3 +15,6 @@ services:
       - 9944:9944
     volumes:
       - ./state:/da/state:rw
+    restart: unless-stopped
+    stop_grace_period: 100s
+    network_mode: host
