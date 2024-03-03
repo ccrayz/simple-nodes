@@ -1,0 +1,19 @@
+version: "3.9"
+
+services:
+  avail:
+    container_name: avail
+    image: availj/avail:v1.10.0.0
+    restart: unless-stopped
+    stop_grace_period: 100s
+    command:
+      - --chain=goldberg
+      - --name=ccrayz"
+      - -d
+      - /da/state
+    ports:
+      - 30333:30333
+      - 9615:9615
+      - 9944:9944
+    volumes:
+      - ./state:/da/state:rw
