@@ -18,3 +18,8 @@ services:
     restart: unless-stopped
     stop_grace_period: 100s
     network_mode: host
+    logging:
+      driver: "json-file"
+      options:
+        max-file: "5"
+        max-size: 2048m
